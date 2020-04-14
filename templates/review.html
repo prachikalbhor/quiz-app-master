@@ -1,0 +1,93 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<ul class="list-group mt-5">
+      <li class="list-group-item list-group-item-warning">Result</li>
+      <li class="list-group-item">No of correct ans:{{correct}}</li>
+      <li class="list-group-item">No of incorrect ans:{{incorrect}}</li>
+      <li class="list-group-item">Percentage: {{p}}</li>
+
+</ul>
+{% for q in question %}
+
+<ul class="list-group mt-5">
+      <li class="list-group-item list-group-item-warning">{{q.question}}</li>
+      <li class="list-group-item">Correct answer : {{q.right}}</li>
+
+</ul>
+{% endfor %}
+<form method="POST" class="mb-5">
+      {% csrf_token %}
+      <div class="col mt-5">
+            <div class="input-group flex-nowrap">
+                  <div class="input-group-prepend">
+                        <span class="input-group-text" id="addon-wrapping">Name:</span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                        aria-describedby="addon-wrapping" name="name">
+            </div>
+            <center>
+                  <div>
+                        <label for="rating">
+                              <b>What would u like to rate us?</b>
+                        </label>
+                  </div>
+
+                  <div class="rating" id="rating">
+                        <label>
+                              <input type="radio" name="stars" value="1" />
+                              <span class="icon">★</span>
+                        </label>
+                        <label>
+                              <input type="radio" name="stars" value="2" />
+                              <span class="icon">★</span>
+                              <span class="icon">★</span>
+                        </label>
+                        <label>
+                              <input type="radio" name="stars" value="3" />
+                              <span class="icon">★</span>
+                              <span class="icon">★</span>
+                              <span class="icon">★</span>
+                        </label>
+                        <label>
+                              <input type="radio" name="stars" value="4" />
+                              <span class="icon">★</span>
+                              <span class="icon">★</span>
+                              <span class="icon">★</span>
+                              <span class="icon">★</span>
+                        </label>
+                        <label>
+                              <input type="radio" name="stars" value="5" />
+                              <span class="icon">★</span>
+                              <span class="icon">★</span>
+                              <span class="icon">★</span>
+                              <span class="icon">★</span>
+                              <span class="icon">★</span>
+                        </label>
+
+                  </div>
+            </center>
+            <center>
+                  <div class="review mb-5">
+                        <label for="r">
+                              <b>What would u like to share with us?</b>
+                        </label>
+                        <input name="review" class="form-control" id='r' type="text" style="width: 50%;height: 200px;">
+
+                  </div>
+            </center>
+
+      </div>
+
+      <div>
+            <center>
+                  <input class="btn btn-warning" type="submit" value="Submit">
+            </center>
+
+      </div>
+
+
+</form>
+{% endblock %}

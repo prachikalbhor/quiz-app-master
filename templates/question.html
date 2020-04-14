@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<form action="{% url 'test' %}" method="POST">
+      {% csrf_token %}
+      {% for q in question %}
+      <ul class="list-group mt-5 mb-5">
+
+            <li class="list-group-item list-group-item-warning">Question: {{ q.question }} ?</li>
+            <li class="list-group-item"><label class="radio-inline"><input type="radio" value="1"
+                              name="choice{{forloop.counter }}" checked />{{ q.a1 }} </label></li>
+            <li class="list-group-item"><label class="radio-inline"><input type="radio" value="2"
+                              name="choice{{forloop.counter }}" checked />{{ q.a2 }} </label></li>
+            <li class="list-group-item"><label class="radio-inline"><input type="radio" value="3"
+                              name="choice{{forloop.counter }}" checked />{{ q.a3 }} </label></li>
+            <li class="list-group-item"><label class="radio-inline"><input type="radio" value="4"
+                              name="choice{{forloop.counter }}" checked />{{ q.a4 }} </label></li>
+
+
+
+      </ul>
+      {% endfor %}
+      <center><button type="submit" class="btn btn-warning mb-5">Submit</button></center>
+
+
+</form>
+
+{% endblock %}
